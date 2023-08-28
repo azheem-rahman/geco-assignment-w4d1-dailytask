@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers";
-import { Button, FormControl } from "@mui/material";
+import { Button } from "@mui/material";
 
 class Form extends Component {
   state = {
@@ -25,16 +25,16 @@ class Form extends Component {
     const eventId = event.target.id;
     const eventValue = event.target.value;
 
-    if (eventId == "name") {
+    if (eventId === "name") {
       this.validateName(eventValue);
     }
-    if (eventId == "email") {
+    if (eventId === "email") {
       this.validateEmail(eventValue);
     }
-    if (eventId == "contact") {
+    if (eventId === "contact") {
       this.validateContact(eventValue);
     }
-    if (eventId == "info") {
+    if (eventId === "info") {
       this.validateInfo(eventValue);
     }
   };
