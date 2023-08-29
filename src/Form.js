@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers";
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 class Form extends Component {
   state = {
@@ -193,19 +193,24 @@ class Form extends Component {
   render() {
     return (
       <form autoComplete="off" onSubmit={this.handleSubmit}>
-        <Box
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+        <Grid
+          container
+          item
+          direction={"column"}
+          style={{
+            display: "flex",
+            alignItems: "center",
           }}
-          style={{ border: "solid 1px black" }}
+          rowGap={2}
         >
-          <div>
+          <Grid item>
             <TextField
               required
               id="name"
               label="Name"
               onChange={this.handleChange}
               helperText={this.state.errorMessages.nameError}
+              sx={{ margin: 1, minWidth: "40ch", maxWidth: "90vw" }}
             />
             <DatePicker
               label="Date of Birth"
@@ -217,16 +222,18 @@ class Form extends Component {
                   helperText: this.state.errorMessages.dateError,
                 },
               }}
+              sx={{ margin: 1, minWidth: "40ch", maxWidth: "90vw" }}
             />
-          </div>
+          </Grid>
 
-          <div>
+          <Grid item>
             <TextField
               required
               id="email"
               label="Email"
               onChange={this.handleChange}
               helperText={this.state.errorMessages.emailError}
+              sx={{ margin: 1, minWidth: "40ch", maxWidth: "90vw" }}
             />
             <TextField
               required
@@ -234,10 +241,11 @@ class Form extends Component {
               label="Contact No."
               onChange={this.handleChange}
               helperText={this.state.errorMessages.contactError}
+              sx={{ margin: 1, minWidth: "40ch", maxWidth: "90vw" }}
             />
-          </div>
+          </Grid>
 
-          <div>
+          <Grid>
             <TextField
               required
               id="info"
@@ -246,15 +254,24 @@ class Form extends Component {
               rows={4}
               onChange={this.handleChange}
               helperText={this.state.errorMessages.infoError}
+              sx={{ minWidth: "80ch", maxWidth: "90vw" }}
             />
-          </div>
+          </Grid>
 
-          <div>
-            <Button type="submit" variant="contained" sx={{ margin: 1 }}>
-              Submit
-            </Button>
-          </div>
-        </Box>
+          <Grid
+            container
+            direction="column"
+            item
+            xs={12}
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <Grid item>
+              <Button type="submit" variant="contained">
+                Submit
+              </Button>
+            </Grid>
+          </Grid>
+        </Grid>
       </form>
     );
   }
